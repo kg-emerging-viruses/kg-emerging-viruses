@@ -1,11 +1,12 @@
 ---
 merged_graph:
-  targets:
+  source:
     drug-central:
-      type: tsv
-      filename:
-        - data/transformed/drug_central/nodes.tsv
-        - data/transformed/drug_central/edges.tsv
-destination:
-  type: tsv
-  filename: merged-kg
+      input:
+        format: tsv
+        filename:
+          - data/transformed/drug_central/nodes.tsv
+          - data/transformed/drug_central/edges.tsv
+  destination:
+    format: tsv
+    filename: merged-kg

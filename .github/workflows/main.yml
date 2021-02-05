@@ -19,8 +19,7 @@ jobs:
           pip install --upgrade pytest
           pip install --upgrade mypy
           pip install --upgrade pylint
-          pip install -r requirements.txt
-          pip install yamllint          
+          pip install yamllint
           pip install coveralls
           pip install pytest-cov
           pip install validate_version_code

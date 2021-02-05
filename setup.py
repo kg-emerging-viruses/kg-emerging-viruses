@@ -59,6 +59,7 @@ setup(
     ],
     packages=find_packages(exclude=['contrib', 'docs', 'tests*']),
     tests_require=test_deps,
+
     # add package dependencies
     install_requires=[
         'tqdm',
@@ -70,7 +71,8 @@ setup(
         'pyyaml',
         'bmt',
         'SPARQLWrapper',
-        'ensmallen_graph==0.4.3'
+        'ensmallen_graph==0.4.3',
+        'kgx==0.3.1'
     ],
     extras_require=extras,
 )

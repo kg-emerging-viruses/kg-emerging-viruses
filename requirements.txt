@@ -1,2 +1,0 @@
-pyshex==0.7.14  # 0.7.15 is a problematic release, pinning to 0.7.14 for now
-git+git://github.com/deepakunni3/kgx@kg-covid-19

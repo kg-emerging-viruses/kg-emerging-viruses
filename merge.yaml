@@ -22,22 +22,25 @@ configuration:
 
 merged_graph:
   name: KG-COVID-19 Graph
-  targets:
+  source:
     drug-central:
-      type: tsv
-      filename:
-        - data/transformed/drug_central/nodes.tsv
-        - data/transformed/drug_central/edges.tsv
+      input:
+        format: tsv
+        filename:
+          - data/transformed/drug_central/nodes.tsv
+          - data/transformed/drug_central/edges.tsv
     pharmgkb:
-      type: tsv
-      filename:
-        - data/transformed/pharmgkb/nodes.tsv
-        - data/transformed/pharmgkb/edges.tsv
+      input:
+        format: tsv
+        filename:
+          - data/transformed/pharmgkb/nodes.tsv
+          - data/transformed/pharmgkb/edges.tsv
     STRING:
-      type: tsv
-      filename:
-        - data/transformed/STRING/nodes.tsv
-        - data/transformed/STRING/edges.tsv
+      input:
+        format: tsv
+        filename:
+          - data/transformed/STRING/nodes.tsv
+          - data/transformed/STRING/edges.tsv
       filters:
         node_filters:
           category:
@@ -60,60 +63,71 @@ merged_graph:
             alternative_property: xrefs
             prefix: UniProtKB
     ttd:
-      type: tsv
-      filename:
-        - data/transformed/ttd/nodes.tsv
-        - data/transformed/ttd/edges.tsv
+      input:
+        format: tsv
+        filename:
+          - data/transformed/ttd/nodes.tsv
+          - data/transformed/ttd/edges.tsv
     zhou-host-proteins:
-      type: tsv
-      filename:
-        - data/transformed/zhou_host_proteins/nodes.tsv
-        - data/transformed/zhou_host_proteins/edges.tsv
+      input:
+        format: tsv
+        filename:
+          - data/transformed/zhou_host_proteins/nodes.tsv
+          - data/transformed/zhou_host_proteins/edges.tsv
     SciBite-CORD-19:
-      type: tsv
-      filename:
-        - data/transformed/SciBite-CORD-19/nodes.tsv
-        - data/transformed/SciBite-CORD-19/edges.tsv
+      input:
+        format: tsv
+        filename:
+          - data/transformed/SciBite-CORD-19/nodes.tsv
+          - data/transformed/SciBite-CORD-19/edges.tsv
     sars-cov-2-gene-annot:
-      type: tsv
-      filename:
-        - data/transformed/sars_cov_2_gene_annot/nodes.tsv
-        - data/transformed/sars_cov_2_gene_annot/edges.tsv
+      input:
+        format: tsv
+        filename:
+          - data/transformed/sars_cov_2_gene_annot/nodes.tsv
+          - data/transformed/sars_cov_2_gene_annot/edges.tsv
     intact:
-      type: tsv
-      filename:
-        - data/transformed/intact/nodes.tsv
-        - data/transformed/intact/edges.tsv
+      input:
+        format: tsv
+        filename:
+          - data/transformed/intact/nodes.tsv
+          - data/transformed/intact/edges.tsv
     chembl:
-      type: tsv
-      filename:
-        - data/transformed/ChEMBL/nodes.tsv
-        - data/transformed/ChEMBL/edges.tsv
+      input:
+        format: tsv
+        filename:
+          - data/transformed/ChEMBL/nodes.tsv
+          - data/transformed/ChEMBL/edges.tsv
     gene-ontology:
-      type: tsv
-      filename:
-        - data/transformed/ontologies/go-plus_nodes.tsv
-        - data/transformed/ontologies/go-plus_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - data/transformed/ontologies/go-plus_nodes.tsv
+          - data/transformed/ontologies/go-plus_edges.tsv
     mondo-ontology:
-      type: tsv
-      filename:
-        - data/transformed/ontologies/mondo_nodes.tsv
-        - data/transformed/ontologies/mondo_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - data/transformed/ontologies/mondo_nodes.tsv
+          - data/transformed/ontologies/mondo_edges.tsv
     chebi:
-      type: tsv
-      filename:
-        - data/transformed/ontologies/chebi_nodes.tsv
-        - data/transformed/ontologies/chebi_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - data/transformed/ontologies/chebi_nodes.tsv
+          - data/transformed/ontologies/chebi_edges.tsv
     hp-ontology:
-      type: tsv
-      filename:
-        - data/transformed/ontologies/hp_nodes.tsv
-        - data/transformed/ontologies/hp_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - data/transformed/ontologies/hp_nodes.tsv
+          - data/transformed/ontologies/hp_edges.tsv
     go-cams:
-      type: tsv
-      filename:
-        - data/transformed/GOCAMs/GOCAMs_nodes.tsv
-        - data/transformed/GOCAMs/GOCAMs_edges.tsv
+      input:
+        format: tsv
+        filename:
+          - data/transformed/GOCAMs/GOCAMs_nodes.tsv
+          - data/transformed/GOCAMs/GOCAMs_edges.tsv
   operations:
     - name: kgx.operations.summarize_graph.generate_graph_stats
       args:
@@ -125,15 +139,15 @@ merged_graph:
           - provided_by
   destination:
     merged-kg-tsv:
-      type: tsv
+      format: tsv
       compression: tar.gz
       filename: merged-kg
 #    merged-kg-nt:
-#      type: nt
+#      format: nt
 #      compression: gz
 #      filename: merged-kg.nt.gz
 #    merged-kg-neo4j:
-#      type: neo4j
+#      format: neo4j
 #      uri: http://localhost:8484
 #      username: neo4j
 #      password: admin
