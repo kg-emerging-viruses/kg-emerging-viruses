@@ -187,6 +187,16 @@ class ScibiteCordTransform(Transform):
                 curie = self.contract_uri(t)
                 name = self.concept_name_map[t] if t in self.concept_name_map else "",
 
+            ###
+            ###temporary solution to normalize PR: prefixes to UniProtKB
+            ###
+
+            ### requjires testing
+            if re.search("^PR:\d+$", curie):
+                orig = curie
+                curie = re.sub("^PR:", "UniProtKB:", curie)
+                print("WARNING: replaced %s with %s", orig, curie)
+
             if t not in self.seen:
                 # add a biolink:OntologyClass node for each term
                 write_node_edge_item(
@@ -285,8 +295,18 @@ class ScibiteCordTransform(Transform):
                     curie = self.contract_uri(t)
                     name = self.concept_name_map[t] if t in self.concept_name_map else "",
 
+                ###
+                ###temporary solution to normalize PR: prefixes to UniProtKB
+                ###
+
+                ### requjires testing
+                if re.search("^PR:\d+$", curie):
+                    orig = curie
+                    curie = re.sub("^PR:", "UniProtKB:", curie)
+                    print("WARNING: replaced %s with %s", orig, curie)
+
                 if t not in self.seen:
-                    # add a biolink:OntologyClass node for each term
+                    
                     write_node_edge_item(
                         fh=node_handle,
                         header=self.node_header,
@@ -304,6 +324,7 @@ class ScibiteCordTransform(Transform):
                     # OntologyClass -> correlated_with -> Publication
                     # with the edge having relation RO:0002610
                     if (curie, paper_curie) not in self.seen:
+
                         write_node_edge_item(
                             fh=edge_handle,
                             header=self.edge_header,
